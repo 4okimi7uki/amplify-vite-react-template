@@ -10,6 +10,9 @@ backend:
 
 frontend:
   phases:
+    preBuild:
+      commands:
+        - export NODE_OPTIONS=--max-old-space-size=4096
     build:
       commands:
         - corepack enable
