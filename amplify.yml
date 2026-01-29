@@ -3,7 +3,7 @@ backend:
   phases:
     build:
       commands:
-        - export NODE_OPTIONS="--max-old-space-size=4096"
+        - export NODE_OPTIONS="--max-old-space-size=6144"
         - corepack enable
         - corepack prepare pnpm@latest --activate
         - pnpm config set store-dir .pnpm-store
@@ -14,7 +14,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - export NODE_OPTIONS="--max-old-space-size=4096"
+        - export NODE_OPTIONS="--max-old-space-size=6144"
         - corepack enable
         - corepack prepare pnpm@latest --activate
         - pnpm config set store-dir .pnpm-store
