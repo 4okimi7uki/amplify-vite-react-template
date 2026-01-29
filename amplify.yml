@@ -3,12 +3,17 @@ backend:
   phases:
     build:
       commands:
-        - pnpm ci --cache .npm --prefer-offline
+        - corepack enable
+        - corepack prepare pnpm@latest --activate
+        - pnpm install --frozen-lockfile
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+
 frontend:
   phases:
     build:
       commands:
+        - corepack enable
+        - corepack prepare pnpm@latest --activate
         - pnpm run build
   artifacts:
     baseDirectory: dist
@@ -16,5 +21,5 @@ frontend:
       - "**/*"
   cache:
     paths:
-      - .npm/**/*
+      - .pnpm-store/**/*
       - node_modules/**/*
