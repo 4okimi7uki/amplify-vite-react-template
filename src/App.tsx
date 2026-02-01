@@ -30,7 +30,15 @@ function App() {
       <ul>
         {todos.map((todo) => (
           <>
-            <li key={todo.id} onClick={() => deleteTodo(todo.id)}>
+            <li
+              key={todo.id}
+              onClick={() => {
+                const flg = confirm("Do you delete this task?");
+                if (flg) {
+                  deleteTodo(todo.id);
+                }
+              }}
+            >
               {todo.content}
             </li>
           </>
